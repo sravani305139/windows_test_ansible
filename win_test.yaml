@@ -1,0 +1,14 @@
+---
+  - name: Windows Sample
+    hosts: all
+    gather_facts: true
+    tasks:
+      - name: ping_test
+        win_ping:
+        register: win_ping
+      - debug:
+          ver: win_ping
+      - name: copy file
+        copy:
+          src: "{{ source_dest }}"
+          dest: "{{ dest_loc }}"
